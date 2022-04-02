@@ -36,7 +36,7 @@ public class Authentication extends Object {
         else
         {
             if(data.get(nome) == pw)
-                System.out.println("Logged in!");
+                System.out.println(nome+" Logged in!");
             else
                 System.out.println("Wrong password!");
         }
