@@ -5,29 +5,29 @@ import com.es2.decorator.CustomProductProtocol;
 import com.es2.decorator.ProductDecorator;
 import com.es2.decorator.ProductSoesPatternPrinting;
 import com.es2.decorator.Shoes;
+import com.es2.memento.BackupService;
+import com.es2.memento.ExistingShoesVersionException;
+import com.es2.memento.NotExistingSnapshotException;
+import com.es2.memento.ShoesVersion;
 import com.es2.singleton.Authentication;
 
 import javax.swing.*;
 import java.io.IOException;
 
 public class main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NotExistingSnapshotException, ExistingShoesVersionException {
+/*        //****SINGLETON***
+       System.out.println("********\nSINGLETON\n********");
+        com.es2.singleton.Registry.getInstance().setPath("Server=myServerName;Database=myDataBase;");
+        Registry.getInstance().addUser("Pedro","123");
+        Registry.getInstance().addUser("Pedro","aaa");
+        Registry.getInstance().addUser("Carlos","123");
+       Registry.getInstance().login("Pedro","13");
+       Registry.getInstance().login("Pedro","123");
 
 
-        System.out.println("SINGLETON");
-        Authentication A1 = Authentication.getInstance();
-        Authentication A2 = Authentication.getInstance();
-        System.out.println(A1==A2);
-        Authentication.getInstance().login("User1", "pass");
-        Authentication.getInstance().addUser("User1", "pass");
-        Authentication.getInstance().addUser("User2", "pass");
-        Authentication.getInstance().addUser("User3", "pass");
-        Authentication.getInstance().login("User2", "pass");
-        Authentication.getInstance().login("User3", "pass");
-        Authentication.getInstance().show();
-
-
-        System.out.println("COMPOSITE");
+        //****Composite****
+       System.out.println("********\nCOMPOSITE\n********");
         ShoeBase shoeBaseA=new ShoeBase();
 
         Insole insoleA=new Insole();
@@ -65,14 +65,56 @@ public class main {
         System.out.println("Fios: " + wireA.getShoesComponents());
         //System.out.println("Fios: " + wireB.getShoesComponents());
         System.out.println("Tecidos: " + tissueA.getShoesComponents());
-        // System.out.println("Tecidos: " + tissueB.getShoesComponents());
+       // System.out.println("Tecidos: " + tissueB.getShoesComponents());
         System.out.println("Cortiça: " + corkA.getShoesComponents());
         //System.out.println("Cortiça: " + corkB.getShoesComponents());
         System.out.println("Palmilha: " + insoleA.getShoesComponents());
         //System.out.println("Palmilha: " + insoleB.getShoesComponents());
         System.out.println("Sapato: " + shoeBaseA.getShoesComponents());
+*/
+        //MEMENTO
+        System.out.println("********\nMEMENTO\n********");
+
+        ShoesVersion sV=new ShoesVersion();
+        BackupService bS =new BackupService(sV);
+
+        sV.addVersionShoes("versão 1");
+        bS.takeSnapshot();
+        sV.addVersionShoes("versão 2");
+        bS.takeSnapshot();
+        sV.addVersionShoes("versão 3");
+        bS.takeSnapshot();
+        sV.addVersionShoes("versão 4");
+        bS.takeSnapshot();
+        sV.addVersionShoes("versão 5");
+        bS.takeSnapshot();
+
+        System.out.println("Versões snapshot:"+ sV.getVersionShoes());
+
+        System.out.println("array tamanho: "+sV.getVersionShoes().size());
+        System.out.println("Ultima versão do array:"+ sV.lastVersion());
+
+        bS.restoreSnapshot();System.out.println("restore");
+
+        System.out.println("array tamanho: "+sV.getVersionShoes().size());
+        System.out.println("Ultima versão do array:"+ sV.lastVersion());
+
+        bS.restoreSnapshot();System.out.println("restore");
+        bS.restoreSnapshot();System.out.println("restore");
+
+        System.out.println("array tamanho: "+sV.getVersionShoes().size());
+        System.out.println("Ultima versão do array:"+ sV.lastVersion());
 
 
+        // bS.restoreSnapshotUtilizador(0);
+        //System.out.println("array tamanho: "+sV.getVersionShoes().size());
+        //System.out.println("Ultima versão do array:"+ sV.lastVersion());
+
+
+
+
+
+/*
 
         System.out.println("DECORATOR");
 
@@ -87,6 +129,6 @@ public class main {
 
         System.out.println(DecoratorShoe.getSize());
 
-
+*/
     }
 }
