@@ -138,6 +138,7 @@ public class main {
         System.out.println("********\nFACTORY\n********");
         FactoryState y= new FactoryState();
         Order myOrder= FactoryState.makeOrder("Client");
+
         myOrder.setState("xxx");
         System.out.println(myOrder.getState());
 
