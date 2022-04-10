@@ -5,6 +5,9 @@ import com.es2.decorator.CustomProductProtocol;
 import com.es2.decorator.ProductDecorator;
 import com.es2.decorator.ProductSoesPatternPrinting;
 import com.es2.decorator.Shoes;
+import com.es2.factory.FactoryState;
+import com.es2.factory.Order;
+import com.es2.factory.UndefinedOrderException;
 import com.es2.memento.BackupService;
 import com.es2.memento.ExistingShoesVersionException;
 import com.es2.memento.NotExistingSnapshotException;
@@ -15,7 +18,7 @@ import javax.swing.*;
 import java.io.IOException;
 
 public class main {
-    public static void main(String[] args) throws NotExistingSnapshotException, ExistingShoesVersionException {
+    public static void main(String[] args) throws NotExistingSnapshotException, ExistingShoesVersionException, UndefinedOrderException {
 /*        //****SINGLETON***
        System.out.println("********\nSINGLETON\n********");
         com.es2.singleton.Registry.getInstance().setPath("Server=myServerName;Database=myDataBase;");
@@ -129,6 +132,14 @@ public class main {
 
         /***Bridge***/
         System.out.println("********\nBRIDGE\n********");
+
+
+        /***Factory***/
+        System.out.println("********\nFACTORY\n********");
+        FactoryState y= new FactoryState();
+        Order myOrder= FactoryState.makeOrder("Client");
+        myOrder.setState("xxx");
+        System.out.println(myOrder.getState());
 
     }
 }
