@@ -72,7 +72,7 @@ public class main {
         //System.out.println("Palmilha: " + insoleB.getShoesComponents());
         System.out.println("Sapato: " + shoeBaseA.getShoesComponents());
 */
-        //MEMENTO
+/*        //MEMENTO
         System.out.println("********\nMEMENTO\n********");
 
         ShoesVersion sV=new ShoesVersion();
@@ -110,11 +110,8 @@ public class main {
         //System.out.println("array tamanho: "+sV.getVersionShoes().size());
         //System.out.println("Ultima versão do array:"+ sV.lastVersion());
 
+*/
 
-
-
-
-/*
 
         System.out.println("DECORATOR");
 
@@ -129,6 +126,9 @@ public class main {
 
         System.out.println(DecoratorShoe.getSize());
 
-*/
+
+        /***Bridge***/
+        System.out.println("********\nBRIDGE\n********");
+
     }
 }

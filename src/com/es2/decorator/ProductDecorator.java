@@ -12,7 +12,7 @@ public class ProductDecorator implements CustomProductProtocol{
 
     @Override
     public int getSize() {
-        return this.getSize();
+        return 10;
     }
 
     @Override
