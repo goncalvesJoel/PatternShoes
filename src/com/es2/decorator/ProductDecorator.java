@@ -1,8 +1,25 @@
 package com.es2.decorator;
 
-public class ProductDecorator implements CustomProductProtocol{
+import java.io.IOException;
+
+public class ProductDecorator extends Object implements CustomProductProtocol{
+
+
+    private String type;
+    private int size;
+
     protected ProductDecorator() {
         System.out.println("ProductDecorator ");
+    }
+
+    public ProductDecorator(CustomProductProtocol cust){
+        System.out.println("ProductDecorator");
+    }
+
+    @Override
+    public void Custom(String type, int size) throws ProductException, IOException {
+        this.size = size;
+        this.type = type;
     }
 
     @Override
@@ -12,7 +29,7 @@ public class ProductDecorator implements CustomProductProtocol{
 
     @Override
     public int getSize() {
-        return 10;
+        return getSize()+10;
     }
 
     @Override

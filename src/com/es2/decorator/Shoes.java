@@ -1,12 +1,20 @@
 package com.es2.decorator;
 
+import java.io.IOException;
+
 public class Shoes implements CustomProductProtocol{
+
     private String name = "salto alto";
     private int size = 36;
     private double price = 59.90;
 
     public Shoes() {
         System.out.println("Shoes");
+    }
+
+    @Override
+    public void Custom(String type, int size) throws ProductException, IOException {
+
     }
 
     @Override
